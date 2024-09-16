@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Singers from "./components/Singers.jsx";
+
 
 function App() {
+  const [cantores] = useState([
+    {id:1, name:"Michael Jackson", gender:"Pop", winner:true, position:1},
+    {id:2, name:"Linkin Park", gender:"Rock", winner:true, position:2},
+    {id:3, name:"ExaltaSamba", gender:"Pagode", winner:false, position:3},
+    {id:4, name:"Zeca Pagodinho", gender:"Samba", winner:false, position:4}
+  ])
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        cantores.map((cantor) => (<Singers key={cantor.id} name={cantor.name} gender={cantor.gender} winner={cantor.winner} position={cantor.position} />))
+      }
     </div>
   );
 }
